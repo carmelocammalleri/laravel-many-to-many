@@ -17,6 +17,8 @@ class ProjectTecnologyTableSeeder extends Seeder
         for( $i = 0; $i < 70; $i++ ) {
             $project= Project::inRandomOrder()->first();
             $tecnology_id= Tecnology::inRandomOrder()->first()->id;
+
+            $project->tecnology()->attach($tecnology_id);
         }
     }
 }
