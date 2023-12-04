@@ -28,7 +28,7 @@
                   <td>
                     @forelse ($project->tecnologies as $tecnology)
 
-                    <span class="badge bg-dark text-white cursor-pointer">{{ $tecnology->name}}</span>
+                    <span class="badge bg-dark text-white">{{ $tecnology->name}}</span>
                     @empty
                     -
                     @endforelse
