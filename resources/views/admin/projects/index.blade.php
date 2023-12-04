@@ -26,7 +26,12 @@
                   <td>{{ $project->date_creation}}</td>
                   <td>{{ $project->type->name ?? '-'}}</td>
                   <td>
-                    <span class="badge badge-dark">{{ $project->tecnology->name ?? '-'}}</span>
+                    @forelse ($project->tecnologies as $tecnology)
+
+                    <span class="badge badge-dark">{{ $tecnology->name }}</span>
+                    @empty
+                    -
+                    @endforelse
                   </td>
                   <td>
                     <a class="btn btn-success" href="{{ route('admin.projects.show', $project->id)}}"><i class="fa-solid fa-eye"></i></a>
