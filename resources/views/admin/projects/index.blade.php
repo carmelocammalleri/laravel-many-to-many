@@ -27,8 +27,7 @@
                   <td>{{ $project->type->name ?? '-'}}</td>
                   <td>
                     @forelse ($project->tecnologies as $tecnology)
-
-                    <span class="badge badge-dark">{{ $tecnology->name }}</span>
+                    {{ $tecnology->name }}
                     @empty
                     -
                     @endforelse
