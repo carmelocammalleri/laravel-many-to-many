@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Tecnology;
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\ProjectRequest;
 
@@ -32,7 +33,8 @@ class ProjectController extends Controller
     {
         $title = 'Inserimento nuovo progetto';
         $types = Type::all();
-        return view('admin.projects.create', compact('title','types','project'));
+        $tecnologies = Tecnology::all();
+        return view('admin.projects.create', compact('title','types','project','tecnologies'));
     }
 
     /**
@@ -45,10 +47,15 @@ class ProjectController extends Controller
     {
         $form_data= $request->all();
         $new_project = new Project;
+        //dd($form_data);
         $new_project['slug']= Project::generateSlug($form_data['name']);
         $new_project->type_id = $form_data['type_id'];
         $new_project->fill($form_data);
         $new_project->save();
+        if(array_key_exists('technologies', $form_data)){
+            $new_project->tecnologies()->attach($form_data['tecnologies']);
+        }
+
         return redirect()->route('admin.projects.show', $new_project->id);
     }
 

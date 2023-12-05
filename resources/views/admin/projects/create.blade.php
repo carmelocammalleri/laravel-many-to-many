@@ -49,21 +49,11 @@
         </div>
         {{-- /web_site --}}
 
-        {{-- tecnology form --}}
-        <div class="mb-3">
-            <label for="tecnology" class="form-label">Tecnologia</label>
-            <input type="text" class="form-control @error('tecnology') is-invalid @enderror" id="tecnology" name="tecnology">
-            @error('tecnology')
-            <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        {{-- /tecnology --}}
-
         {{-- type select options --}}
         <div class="mb-3">
             <label for="type_id" class="form-label">Tipo</label>
             <select id="type_id" name="type_id">
-                <option value="-">Selezionare una tipologia</option>
+                <option value="">Selezionare una tipologia</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}" {{ old('type_id', $project?->type_id) == $type->id?'selected' : '' }} >
                         {{ $type->name }}
@@ -89,6 +79,37 @@
             <input class="form-control" type="file" name="image" id="image">
         </div>
         {{-- /form image --}}
+
+        {{-- checkBox tecnology --}}
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+
+            @foreach ($tecnologies as $tecnology)
+                <label
+                    for="tecnology_{{$tecnology->id}}"
+                    class="btn btn-outline-dark">{{$tecnology->name}}</label>
+                <input
+                    id="tecnology_{{$tecnology->id}}"
+                    type="checkbox"
+                    class="btn-check"
+                    name="tecnologies[]"
+                    value="{{$tecnology->id}}">
+            @endforeach
+
+
+            {{-- @foreach ($tecnologies as $tecnology )
+            <label
+                for="tecnology_{{$tecnology->id}}"
+                class="btn btn-outline-dark">{{$tecnology->name}}</label>
+            <input
+                id="tecnology_{{$tecnology->id}}"
+                type="checkbox"
+                class="btn-check"
+                name="tecnologies[]"
+                value="{{$tecnology->id}}">
+             @endforeach --}}
+        </div>
+        {{-- /checkBox --}}
 
         <div>
             <p class="@error('name') text-danger @enderror">I campi con * sono obbligatori</p>

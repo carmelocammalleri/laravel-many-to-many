@@ -14,7 +14,7 @@ class ProjectTecnologyTableSeeder extends Seeder
      */
     public function run(): void
     {
-        for( $i = 0; $i < 70; $i++ ) {
+        for( $i = 0; $i < 150; $i++ ) {
             $project= Project::inRandomOrder()->first();
             $tecnology_id= Tecnology::inRandomOrder()->first()->id;
 
