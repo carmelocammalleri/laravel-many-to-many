@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $new_project->type_id = $form_data['type_id'];
         $new_project->fill($form_data);
         $new_project->save();
-        if(array_key_exists('technologies', $form_data)){
+        if(array_key_exists('tecnologies', $form_data)){
             $new_project->tecnologies()->attach($form_data['tecnologies']);
         }
 

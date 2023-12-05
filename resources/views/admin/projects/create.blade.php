@@ -83,31 +83,18 @@
         {{-- checkBox tecnology --}}
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 
-
             @foreach ($tecnologies as $tecnology)
-                <label
-                    for="tecnology_{{$tecnology->id}}"
-                    class="btn btn-outline-dark">{{$tecnology->name}}</label>
-                <input
-                    id="tecnology_{{$tecnology->id}}"
-                    type="checkbox"
-                    class="btn-check"
-                    name="tecnologies[]"
-                    value="{{$tecnology->id}}">
-            @endforeach
-
-
-            {{-- @foreach ($tecnologies as $tecnology )
+            <input
+            id="tecnology_{{$tecnology->id}}"
+            type="checkbox"
+            class="btn-check"
+            name="tecnologies[]"
+            value="{{$tecnology->id}}">
             <label
                 for="tecnology_{{$tecnology->id}}"
                 class="btn btn-outline-dark">{{$tecnology->name}}</label>
-            <input
-                id="tecnology_{{$tecnology->id}}"
-                type="checkbox"
-                class="btn-check"
-                name="tecnologies[]"
-                value="{{$tecnology->id}}">
-             @endforeach --}}
+            @endforeach
+
         </div>
         {{-- /checkBox --}}
 
