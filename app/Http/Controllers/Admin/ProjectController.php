@@ -104,7 +104,6 @@ class ProjectController extends Controller
 
         $project->type_id = $form_data['type_id'];
 
-        dd($form_data);
         //cerco la chiave
         if(array_key_exists('tecnologies', $form_data)){
             $project->tecnologies()->sync($form_data['tecnologies']);
