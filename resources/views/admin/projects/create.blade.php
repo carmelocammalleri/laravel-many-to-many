@@ -85,11 +85,11 @@
 
             @foreach ($tecnologies as $tecnology)
             <input
-            id="tecnology_{{$tecnology->id}}"
-            type="checkbox"
-            class="btn-check"
-            name="tecnologies[]"
-            value="{{$tecnology->id}}">
+                id="tecnology_{{$tecnology->id}}"
+                type="checkbox"
+                class="btn-check"
+                name="tecnologies[]"
+                value="{{$tecnology->id}}">
             <label
                 for="tecnology_{{$tecnology->id}}"
                 class="btn btn-outline-dark">{{$tecnology->name}}</label>

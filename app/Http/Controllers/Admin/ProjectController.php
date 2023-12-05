@@ -79,9 +79,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $title='Modifica i singoli elementi';
+        $title ='Modifica i singoli elementi';
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'title','types'));
+        $tecnologies = Tecnology::all();
+        return view('admin.projects.edit', compact('project', 'title','types', 'tecnologies'));
     }
 
     /**
@@ -94,6 +95,7 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, Project $project)
     {
         $form_data= $request->all();
+
         if($form_data['name'] != $project->name){
             $form_data['slug'] = $project->slug;
         }else{
@@ -101,7 +103,15 @@ class ProjectController extends Controller
         }
 
         $project->type_id = $form_data['type_id'];
-        $project->update($form_data);
+
+        dd($form_data);
+        //cerco la chiave
+        if(array_key_exists('tecnologies', $form_data)){
+            $project->tecnologies()->sync($form_data['tecnologies']);
+        }
+        $project->update();
+
+
         return redirect()->route('admin.projects.show', $project);
     }
 

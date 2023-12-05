@@ -51,17 +51,6 @@
         </div>
         {{-- /web_site form --}}
 
-
-        {{-- tecnology form --}}
-        <div class="mb-3">
-            <label for="tecnology" class="form-label">Tecnologia</label>
-            <input type="text" class="form-control @error('tecnology') is-invalid @enderror" id="tecnology" name="tecnology" value="{{ old('tecnology',$project->tecnology) }}">
-            @error('tecnology')
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-        {{-- /tecnology form --}}
-
         {{-- type select options --}}
         <div class="mb-3">
             <label for="type_id" class="form-label">Tipo</label>
@@ -83,6 +72,24 @@
             @enderror
         </div>
         {{-- /description form --}}
+
+         {{-- checkBox tecnology --}}
+         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+            @foreach ($tecnologies as $tecnology)
+            <input
+                id="tecnology_{{$tecnology->id}}"
+                type="checkbox"
+                class="btn-check"
+                name="tecnologies[]"
+                value="{{$tecnology->id}}">
+            <label
+                for="tecnology_{{$tecnology->id}}"
+                class="btn btn-outline-dark">{{$tecnology->name}}</label>
+            @endforeach
+
+        </div>
+        {{-- /checkBox --}}
 
         <button type="submit" class="btn btn-secondary ">Invia</button>
         <button type="reset" class="btn btn-danger">Annulla</button>
